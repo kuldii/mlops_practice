@@ -1,6 +1,9 @@
 # pipeline.sh
 #!/bin/bash
 
+# Run requirements
+pip install -r requirements.txt
+
 # Run data_creation.py
 python3 data_creation.py
 
