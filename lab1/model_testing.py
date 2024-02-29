@@ -7,7 +7,7 @@ y_test = test_data["Survived"]
 X_test = test_data.drop(columns="Survived")
 
 # Load the model
-with open('lab1/model.pkl', 'rb') as f:
+with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Test the model
