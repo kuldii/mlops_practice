@@ -16,5 +16,5 @@ lr = LogisticRegression()
 lr.fit(X_train, y_train)
 
 # Save the model
-with open('lab1/model.pkl', 'wb') as f:
+with open('model.pkl', 'wb') as f:
     pickle.dump(lr, f)
