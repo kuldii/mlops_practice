@@ -1,6 +1,6 @@
 import pandas as pd
 import pickle
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_curve, roc_auc_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 
 test_data = pd.read_csv("datasets/test/preprocessed_test_data.csv")
 y_test = test_data["Survived"]
