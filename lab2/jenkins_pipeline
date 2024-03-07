@@ -2,34 +2,50 @@ pipeline {
     agent any
 
     stages {
-        stage('Install Dependencies') {
+        stage('Git') {
             steps {
-                sh 'pip install -r requirements.txt'
+                git branch: 'main', credentialsId: 'git_credentials', url: 'https://github.com/kuldii/mlops_practice.git'
             }
         }
-
-        stage('Get Dataset') {
+        
+        stage('Install Requirements'){
             steps {
-                sh 'python3 data_creation.py'
-            }
+                dir('lab2'){
+                    sh "pip install -r requirements.txt"
+                }
+            }   
         }
-
-        stage('Data Pre-processing') {
+        
+        stage('Get Datasets'){
             steps {
-                sh 'python3 data_preprocessing.py'
-            }
+                dir('lab2'){
+                    sh "python3 data_creation.py"
+                }
+            }   
         }
-
-        stage('Train Model') {
+        
+        stage('Preproccessing Data'){
             steps {
-                sh 'python3 model_preparation.py'
-            }
+                dir('lab2'){
+                    sh "python3 data_preprocessing.py"
+                }
+            }   
         }
-
-        stage('Evaluate Model') {
+        
+        stage('Training Model'){
             steps {
-                sh 'python3 model_testing.py'
-            }
+                dir('lab2'){
+                    sh "python3 model_preparation.py"
+                }
+            }   
+        }
+        
+        stage('Testing Model'){
+            steps {
+                dir('lab2'){
+                    sh "python3 model_testing.py"
+                }
+            }   
         }
     }
 }
