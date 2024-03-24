@@ -1,0 +1,6 @@
+version: "1"
+services:
+  emotion-classifier:
+    build: .
+    ports:
+      - "8501:8501"
